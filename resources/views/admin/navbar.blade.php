@@ -18,11 +18,11 @@
       </li>
       
       <li class="nav-item menu-items">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
+        <a class="nav-link" href="{{ url('/foodmenu') }}">
           <span class="menu-icon">
             <i class="mdi mdi-playlist-play"></i>
           </span>
-          <span class="menu-title">Foods</span>
+          <span class="menu-title">FoodMenu</span>
         </a>
       </li>
       <li class="nav-item menu-items">
@@ -34,7 +34,7 @@
         </a>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="pages/charts/chartjs.html">
+        <a class="nav-link" href="{{ '/viewreservation' }}">
           <span class="menu-icon">
             <i class="mdi mdi-chart-bar"></i>
           </span>

@@ -6,15 +6,28 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Food;
+
 class HomeController extends Controller
 {
     
- public function index(){
-    return view ('home');
+ public function index()
+ {
+
+
+   //an instance that will be used to fetch data from the models food table
+   $data = food::all();
+
+    return view ('home', compact('data'));
  }
 
 
  public function redirects(){
+
+
+   //an instance that will be used to fetch data from the models food table
+   //remember undefined $data variable error
+    $data = food::all();
 
    $usertype = Auth::user()->usertype;
 
@@ -25,7 +38,7 @@ class HomeController extends Controller
 
    else 
    {
-      return view('home');
+      return view('home', compact('data'));
    }
  }
 
