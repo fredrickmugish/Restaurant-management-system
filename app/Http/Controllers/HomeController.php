@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Food;
 
+use App\Models\Chef;
+
 class HomeController extends Controller
 {
     
@@ -15,19 +17,21 @@ class HomeController extends Controller
  {
 
 
-   //an instance that will be used to fetch data from the models food table
+   //an instance that will be used to fetch data from the food table
    $data = food::all();
 
-    return view ('home', compact('data'));
+   //an instance that will be used to fetch data from the chef table
+   $data2 = chef::all();
+
+    return view ('home', compact('data','data2'));
  }
 
 
  public function redirects(){
 
-
-   //an instance that will be used to fetch data from the models food table
-   //remember undefined $data variable error
     $data = food::all();
+
+    $data2 = chef::all();
 
    $usertype = Auth::user()->usertype;
 
@@ -38,8 +42,14 @@ class HomeController extends Controller
 
    else 
    {
-      return view('home', compact('data'));
+      return view('home', compact('data', 'data2'));
    }
+ }
+
+ public function viewchef()
+ {
+     $data = chef::all();
+     return view('home', compact('data'));
  }
 
 }

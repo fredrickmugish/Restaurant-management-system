@@ -15,9 +15,10 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-
+//Before login
 Route::get('/', [HomeController::class, 'index']);
 
+//After login
 Route::get('redirects', [HomeController::class, 'redirects']);
 
 Route::get('/users', [AdminController::class, 'user']);
@@ -36,8 +37,19 @@ Route::post('/update/{id}', [AdminController::class, 'update']);
 
 Route::post('/reservation', [AdminController::class, 'reservation']);
 
-
 Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
+
+Route::get('/addchef', [AdminController::class, 'addchef']);
+
+Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
+
+Route::get('/viewchef', [AdminController::class, 'viewchef']);
+
+Route::get('/deletechef/{id}', [AdminController::class, 'deletechef']);
+
+Route::get('/updatechefview/{id}', [AdminController::class, 'updatechefview']);
+
+Route::post('/updatechef/{id}', [AdminController::class, 'updatechef']);
 
 
 Route::middleware([

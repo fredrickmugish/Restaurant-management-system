@@ -45,7 +45,7 @@
         
         
         <div>
-            <input style="background:green" type="submit" value="save">
+            <input style="background:green" type="submit" value="Update food">
         </div>
         </form>
       </div>

@@ -10,6 +10,8 @@ use App\Models\Food;
 
 use App\Models\Reservation;
 
+use App\Models\Chef;
+
 class AdminController extends Controller
 {
 
@@ -45,15 +47,8 @@ class AdminController extends Controller
       //upload the data into the database( INTO food TABLE)
       $data = new food;
 
-      //get request from the image 'name' input field
-      $image = $request->image;
-
-      //code used to upload foodimage into the database and 
-      //save the food image into the foodimage folder of 
-      //our application
-      // NB:remember to create the foodimage folder in the public folder of
-      // our application
-
+  
+$image = $request->image;
 $imagename = time().'.'.$image->getClientOriginalExtension();
 $request->image->move('foodimage', $imagename);
 $data->image = $imagename;
@@ -86,10 +81,6 @@ return redirect()->back();
     public function update(Request $request, $id)
     {
       $data = food::find($id);
-      
-      //the code that we used to upload the food image into the database 
-      //and into the foodimage folder of our application that is 
-      //in the upload function
       $image = $request->image;
 
       $imagename = time().'.'.$image->getClientOriginalExtension();
@@ -126,6 +117,67 @@ return redirect()->back();
 
       $data = reservation::all();
       return view ('admin.adminreservation', compact('data'));
+    }
+
+    public function addchef()
+    {
+      
+      $data = chef::all();
+      return view("admin.adminchef", compact("data"));
 
     }
+
+    public function uploadchef(Request $request)
+    {
+      $data = new chef;
+      
+      //For uploading image using an instance $image
+      $image = $request->image;
+
+      //a method used to get the extension of the uploaded image/file
+      $imagename = time().'.'.$image->getClientOriginalExtension();
+      $request->image->move('chefimage', $imagename);
+      $data->image = $imagename;
+
+      $data->name = $request->name;
+      $data->speciality = $request->speciality;
+      
+      $data->save();
+      return redirect()->back();
+    }
+
+ public function deletechef($id)
+ {
+   $data = chef::find($id);
+   $data->delete();
+   return redirect()->back();
+ }
+
+ public function updatechefview($id)
+ {
+    $data = chef::find($id);
+  return view('admin.updatechefview', compact('data'));
+
+ }
+
+ public function updatechef(Request $request, $id)
+ {
+  $data = chef::find($id);
+  $image = $request->image;
+
+  if($image)
+{
+  $imagename = time().'.'.$image->getClientOriginalExtension();
+  $request->image->move('chefimage', $imagename);
+  $data->image = $imagename;
+ }
+  $data->name = $request->name;
+  $data->speciality = $request->speciality;
+  
+  
+
+  $data->save();
+  return redirect()->back();
+
+ }
 }
