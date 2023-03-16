@@ -51,6 +51,17 @@ Route::get('/updatechefview/{id}', [AdminController::class, 'updatechefview']);
 
 Route::post('/updatechef/{id}', [AdminController::class, 'updatechef']);
 
+Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
+
+Route::get('/showcart/{id}', [HomeController::class, 'showcart']);
+
+Route::get('/remove/{id}', [HomeController::class, 'remove']);
+
+Route::post('/insertorder', [HomeController::class, 'insertorder']);
+
+Route::get('/orders', [AdminController::class, 'orders']);
+
+Route::get('/search', [AdminController::class, 'search']);
 
 Route::middleware([
     'auth:sanctum',

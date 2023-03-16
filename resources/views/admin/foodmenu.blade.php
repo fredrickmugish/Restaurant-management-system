@@ -77,8 +77,8 @@
        <td>{{ $data->description }}</td>
        <!--consider also the foodimage folder incase of images-->
        <td><img height="100" width="100" src="/foodimage/{{ $data->image }}"></td>
-       <td><a href="{{ url('/deletemenu', $data->id) }}">Delete</a></td>
-       <td><a href="{{ url('/updateview', $data->id) }}">Update</a></td>
+       <td><a href="{{ url('/deletemenu', $data->id) }}" class="btn btn-danger">Delete</a></td>
+       <td><a href="{{ url('/updateview', $data->id) }}" class="btn btn-primary">Update</a></td>
    </tr>
        @endforeach
         

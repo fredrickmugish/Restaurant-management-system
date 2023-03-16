@@ -15,10 +15,9 @@
 
 
                @foreach ($data as $data)
+               <form action="{{ url('/addcart', $data->id) }}" method="post">
+                @csrf
                    
-               
-                   
-               
                <div class="item">
                 <div style="background-image: url('/foodimage/{{ $data->image }}');"class='card'>
                     <div class="price"><h6>{{ $data->price }}</h6></div>
@@ -30,8 +29,12 @@
                       </div>
                     </div>
                 </div>
+          <input type="number"  min="1"  value="1" style="width: 80px" name="quantity">   
+          <input type="submit" value="Add to cart">
+
             </div>
 
+               </form>
                @endforeach
                     
                 

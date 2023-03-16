@@ -22,7 +22,7 @@
          
         <!--table-->
         <div style="position: relative; top:60px; right:-150px">
-<table style="background-color: grey">
+<table style="background-color: black">
 <tr>
 <th style="padding: 30px">Name</th>
 <th style="padding: 30px">Email</th>
@@ -36,9 +36,9 @@
 <td>{{ $data->email }}</td>
 
 @if ($data->usertype=="0")
-<td><a href="{{ url('/deleteuser', $data->id) }}" >Delete</a></td>
+<td><a href="{{ url('/deleteuser', $data->id) }}" class="btn btn-warning">Delete</a></td>
 @else
-<td><a >Not Allowed</a></td> 
+<td><a class="btn btn-danger" >Not Allowed</a></td> 
 @endif
 </tr>
 

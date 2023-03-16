@@ -14,7 +14,7 @@
       @include("admin.navbar")
      
 <div style="position: relative; top:60px; right:-5px">
-<table bgcolor="grey" border="1px">
+<table bgcolor="black" border="1px">
     <tr>
         <th style="padding: 15px">Name</th>
         <th style="padding: 15px">Email</th>

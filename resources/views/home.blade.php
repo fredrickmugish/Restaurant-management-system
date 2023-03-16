@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <title>Mts Hotel</title>
+    <title>Restaurant</title>
 <!--
     
 TemplateMo 558 Klassy Cafe
@@ -83,6 +83,20 @@ https://templatemo.com/tm-558-klassy-cafe
                             </li>
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+                            <li class="scroll-to-section" style="background: red"><a href="#reservation">
+                                
+                                @auth
+                                <a href="{{ url('/showcart', Auth::user()->id) }}">
+                                Cart[{{ $count }}]
+                                </a>
+                                @endauth
+
+                                @guest
+                                    Cart[0]
+                                @endguest
+                               
+                            </a>
+                        </li> 
 
                             <li> 
                                 @if (Route::has('login'))
@@ -125,7 +139,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>MTS HOTEL</h4>
+                            <h4>Restaurant Reservation System</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Make A Reservation</a>

@@ -12,6 +12,8 @@ use App\Models\Reservation;
 
 use App\Models\Chef;
 
+use App\Models\Order;
+
 class AdminController extends Controller
 {
 
@@ -75,7 +77,7 @@ return redirect()->back();
       $data = food::find($id);
       
       return view("admin.updateview", compact("data"));
-        return redirect()->back();
+        return redirect()->back()->with('food updated successfuly');
     }
 
     public function update(Request $request, $id)
@@ -178,6 +180,25 @@ return redirect()->back();
 
   $data->save();
   return redirect()->back();
-
  }
+
+ public function orders()
+ {
+
+  $data = order::all();
+  return view('admin.vieworders', compact('data'));
+ }
+
+
+ //the search function
+ public function search(Request $request)
+ {
+
+  $search = $request->search;
+  $data = order::where('name','like','%'.$search.'%')->orWhere('foodname','like','%'.$search.'%')
+  ->get();
+  return view('admin.vieworders', compact('data'));
+ }
+
+ 
 }
