@@ -21,7 +21,14 @@ class HomeController extends Controller
  public function index()
  {
 
+   if(Auth::id())
+   {
 
+return redirect('redirects');
+
+   }
+
+else
    //an instance that will be used to fetch data from the food table
    $data = food::all();
 
@@ -94,6 +101,8 @@ public function showcart(Request $request, $id)
 
    //count cart items from the database
   // $count = cart::where('$user_id', $id)->count();
+
+
   $count = cart::where('user_id', $id)->count();
 
   //
