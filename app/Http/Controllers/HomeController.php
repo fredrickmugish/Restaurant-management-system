@@ -105,6 +105,9 @@ public function showcart(Request $request, $id)
 
   $count = cart::where('user_id', $id)->count();
 
+  if(Auth::id()==$id)
+  {
+
   //
   $data2=cart::select('*')->where('user_id', '=', $id)->get();
 
@@ -114,6 +117,13 @@ public function showcart(Request $request, $id)
 
   // return view('showcart', compact('count', '$data'));
   return view('showcart', compact('count', 'data','data2'));
+
+  }
+
+  else
+{
+ return redirect()->back();
+} 
 
 }
 
